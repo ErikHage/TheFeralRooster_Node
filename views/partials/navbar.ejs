@@ -1,0 +1,38 @@
+<nav id="staticNavbar" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a id="li-index" class="navbar-brand" href="/"><i class="fa fa-home"></i></a>
+        </div>
+        <div class="collapse navbar-collapse navbar-right" id="mainNavbar">
+            <ul class="nav navbar-nav">
+                <li id="li-github"><a href="http://www.github.com/ErikHage" target="_blank"><i class="fa fa-github"></i> Github</a></li>
+                <li id="li-skills"><a href="/skills"><i class="fa fa-cogs"></i> Skills</a></li>
+                <li id="li-code"><a href="/code"><i class="fa fa-code"></i> Code</a></li>
+                <li id="li-code"><a href="/stuff"><i class="fa fa-code-fork"></i> Stuff</a></li>
+                <li id="li-code"><a href="/hobbies"><i class="fa fa-beer"></i> Hobbies</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Social Media <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://www.facebook.com/ebhage" target="_blank"><i class="fa fa-facebook-official"></i> Facebook</a></li>
+                        <li><a href="https://www.instagram.com/beerfan_/?hl=en" target="_blank"><i class="fa fa-instagram"></i> Instagram</a></li>
+                        <li><a href="https://twitter.com/EhageErik" target="_blank"><i class="fa fa-twitter-square"></i> Twitter</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<script>
+    /* Set active tab on nav bar */
+    var url = window.location.href;
+    var endpoint = url.substring(url.lastIndexOf('/') + 1, url.length);
+    if (endpoint.length > 0) {
+        $('#li-'+endpoint).addClass('active');
+    }
+</script>
