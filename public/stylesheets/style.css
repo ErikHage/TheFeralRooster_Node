@@ -1,23 +1,34 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: 'Vollkorn', Georgia, Times, serif;
+  color: white;
   background: url('../images/background.png') repeat 0 0;
+  margin: 0;
+  padding: 0;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
   color: red;
+}
+
+p, div {
+
 }
 
 a {
   color: #00B7FF;
 }
 
+footer {
+  color: white;
+}
+
 .jumbotron {
-  position: relative;
-  background: url("../images/sunlight_forest.jpg") no-repeat center center;
-  width:100%;
-  height: 100%;
-  background-size: cover;
+  position: relative !important;
+  width:100% !important;
+  height: 100% !important;
+  background-size: cover !important;
+  padding-top: 70px;
 }
 
 .jumbotron h1 {
@@ -37,4 +48,30 @@ a {
 .jumbotron .logo {
   max-height: 180px;
   padding-left: 10px;
+}
+
+.news-reel {
+  background: rgb(0,0,0);
+  background: rgba(0,0,0, 0.6);
+}
+
+.news-reel .news-entry {
+
+}
+
+.news-reel .news-title {
+  text-shadow: 1px 1px slategrey;
+}
+
+.news-reel .news-date {
+  color: darkgrey;
+  font-style: italic;
+}
+
+.news-reel .news-content {
+
+}
+
+.fa-newspaper-o {
+  color: slategray;
 }

@@ -1,0 +1,20 @@
+{
+  "entries":[
+    {
+      "date" : {
+        "day" : 11,
+        "month" : "June",
+        "year" : 2016 },
+      "title" : "Check out my Github",
+      "content" : "The source code for all my projects is located on my <a href='https://www.github.com/ErikHage' target='_blank'>Github</a>. My notes, practice projects, and even my <a href='https://github.com/ErikHage/Recipes' target='_blank'>recipes</a> are stored there."
+    },
+    {
+      "date" : {
+        "day" : 11,
+        "month" : "June",
+        "year" : 2016 },
+      "title" : "Red White and Brew",
+      "content" : "I'm proud to be a founding member of the Red White and Brew Beer Company, located in Swedesboro, New Jersey. I also designed and host the <a href='http://theferalrooster.com' target='_blank'>brewery's website</a>. I started brewing back in 2012 when I bought a homebrewing kit. I'd always been interested in craft beer, but once I started brewing for myself it became a passion. So when my friend Chris (also a homebrewer) asked me if I would be interested in opening a microbrewery, my answer was an emphatic yes! Our flagship beer is called Checks and Balances IPA. We were tired of all those IPAs out there that are 100% bitterness, with no or very little maltiness. Checks and Balances IPA provides the traditional bitterness you would expect of an IPA, yet also has a nice malty finish to balance that out (hence the name). A close comparison would be 21st Amendment's Brew Free of Die IPA."
+    }
+  ]
+}

@@ -1,48 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <% include partials/headerCommon %>
+
     <title><%= title %></title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!--BOOTSTRAP-->
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 <body>
 
-    <!-- NAVIGATION BAR -->
-    <% include partials/navbar %>
-
-    <div id="jumbotron" class="jumbotron">
-        <div class="row">
-            <div class="col-sm-3">
-                <img class="logo img-responsive center-block" src="images/feralrooster.jpg">
-            </div>
-            <div class="col-sm-9 text-center">
-                <h1><%= title %></h1>
-                <p><%= subtitle %></p>
-            </div>
-        </div>
-    </div>
+    <!-- Header + Navbar -->
+    <% include partials/pageHeader.ejs %>
 
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-1"></div>
-            <div class="col-sm-10">
+            <div class="col-sm-10 news-reel">
 
-                <h2>Projects</h2>
-                <a href="http://theferalrooster.com" target="_blank">Red White and Brew Website</a>
+                <h1 class="news-title text-center">
+                    <i class="fa fa-newspaper-o"></i>&nbsp;News
+                </h1>
+                <br>
 
-                <h2>Source Code</h2>
-                <a href="http://github.com/ErikHage" target="_blank">My Github</a>
+                <% for(var i = 0; i<entries.length; i++) { %>
 
+                    <div class="news-entry">
+                        <h4 class="news-title"><%= entries[i].title %></h4>
+                        <p class="news-date"> --
+                            <%= entries[i].date.month + ' '
+                              + entries[i].date.day + ', '
+                              +  entries[i].date.year %>
+                            --
+                        </p>
+                        <p class="news-content"><%- entries[i].content %></p>
+                        <p>--------------------------------------------------</p>
 
+                    </div>
+
+                <% } %>
 
             </div>
             <div class="col-sm-1"></div>
@@ -50,4 +43,7 @@
     </div>
 
 </body>
+<footer>
+    <% include partials/footer.ejs %>
+</footer>
 </html>
