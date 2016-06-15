@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include partials/headerCommon %>
+
+    <title><%= title %></title>
+</head>
+<body>
+
+    <!-- Header + Navbar -->
+    <% include partials/pageHeader.ejs %>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+
+                <div class="about-item about-summary">
+                    <h3>A Little About Myself</h3>
+                    <p>Stuff about me</p>
+                </div>
+
+                <br>
+
+                <div class="about-item about-work">
+                    <h3>Work Experience</h3>
+                    <p>Maybe a table?</p>
+                </div>
+
+                <br>
+
+                <div class="about-item about-education">
+                    <h3>Education</h3>
+                    <p>details</p>
+                </div>
+
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+    </div>
+
+</body>
+<footer>
+    <% include partials/footer %>
+</footer>
+</html>

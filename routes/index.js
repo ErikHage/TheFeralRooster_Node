@@ -1,9 +1,10 @@
 var express = require('express');
 var fs = require('fs');
+
 var router = express.Router();
 
+var skills = require('../data/skills.json');
 var newsEntries = null;
-
 var lastUpdatedJsonTime = new Date();
 var hobbyBackground = 'beer_back.jpg';
 
@@ -29,12 +30,22 @@ router.get('/', function(req, res, next) {
   });
 });
 
+/* GET about me page. */
+router.get('/about', function(req, res, next) {
+  res.render('aboutMe', {
+    title: 'About Me',
+    subtitle: "Who I Am",
+    jumbotronBackgroundImage: 'circuit.jpg'
+  });
+});
+
 /* GET skills page. */
 router.get('/skills', function(req, res, next) {
   res.render('skills', {
     title: 'Skills',
-    subtitle: 'My Many Talents',
-    jumbotronBackgroundImage: 'maxresdefault.jpg'
+    subtitle: 'What I Know',
+    jumbotronBackgroundImage: 'maxresdefault.jpg',
+    skills: skills.skills
   });
 });
 

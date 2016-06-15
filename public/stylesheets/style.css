@@ -75,3 +75,49 @@ footer {
 .fa-newspaper-o {
   color: slategray;
 }
+
+/* SKILLS PAGE */
+.panel-skills {
+  background-color: transparent !important;
+  color: white;
+}
+
+.panel-heading-skills {
+  background-color: transparent !important;
+  color: white;
+}
+
+.panel-title-skills {
+  background-color: transparent !important;
+  color: white;
+}
+
+.panel-group-skills {
+  background-color: transparent !important;
+  color: white;
+}
+
+.panel-skills h3 {
+  color: white;
+  text-shadow: 0 0 0;
+}
+
+/* ABOUT ME PAGE */
+
+.about-item {
+  padding: 5px 5px 5px 5px;
+  background: rgb(0,0,0);
+  background: rgba(0,0,0, 0.6);
+}
+
+.about-summary {
+
+}
+
+.about-work {
+
+}
+
+.about-education {
+
+}
