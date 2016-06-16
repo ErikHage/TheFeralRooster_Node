@@ -22,11 +22,24 @@ router.get('/', function(req, res, next) {
   //  newsEntries = JSON.parse(data);
   //});
 
+  //sort entries
+
+  var sortedEntries = newsEntries.entries;
+
+  sortedEntries.sort(function(a,b) {
+    if(a.date.year != b.date.year) {
+      return b.date.year - a.date.year;
+    } else if(a.date.month != b.date.month) {
+      return b.date.month - a.date.month;
+    }
+    return b.date.day - a.date.day;
+  });
+
   res.render('index', {
     title: 'The Feral Rooster',
     subtitle: 'Personal domain of Erik B Hage',
     jumbotronBackgroundImage: 'sunlight_forest.jpg',
-    entries: newsEntries.entries
+    entries: sortedEntries
   });
 });
 
