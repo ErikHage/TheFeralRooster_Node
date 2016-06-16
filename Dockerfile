@@ -5,6 +5,9 @@
 
 FROM node:4-onbuild
 
+#Setting ENV variables
+ENV TERM xterm
+
 #Create app directory
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
@@ -12,6 +15,10 @@ WORKDIR /usr/src/app
 #Install App Dependencies
 COPY package.json /usr/src/app/
 RUN npm install
+
+#Install text editor nano
+RUN ["apt-get", "update"]
+RUN ["apt-get", "install", "-y", "nano"]
 
 #Bundle app source
 COPY . /usr/src/app
