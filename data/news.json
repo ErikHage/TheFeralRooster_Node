@@ -15,6 +15,14 @@
         "year" : 2016 },
       "title" : "Red White and Brew",
       "content" : "I'm proud to be a founding member of the Red White and Brew Beer Company, to be located in/around Swedesboro, New Jersey. I also designed and host the <a href='http://107.170.110.210:32799' target='_blank'>brewery's website</a> (currently under construction). I started brewing back in 2012 when I bought a homebrewing kit on a whim. I'd always been interested in craft beer, but once I started brewing for myself it became a passion. So when my friend Chris (also a homebrewer) asked me if I would be interested in opening a microbrewery, my answer was an emphatic yes! We plan to open mid-end of 2017. <!-- Our flagship beer is called Checks and Balances IPA. We were tired of all those IPAs out there that are 100% bitterness, with no or very little maltiness. Checks and Balances IPA provides the traditional bitterness you would expect of an IPA, yet also has a nice malty finish to balance that out (hence the name). A close comparison would be 21st Amendment's Brew Free or Die IPA. -->"
+    },
+    {
+      "date" : {
+        "day" : 16,
+        "month" : 6,
+        "year" : 2016 },
+      "title" : "Some Title",
+      "content" : "Some content"
     }
   ]
 }
