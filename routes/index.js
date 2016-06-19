@@ -4,16 +4,25 @@ var fs = require('fs');
 var router = express.Router();
 
 var skills = require('../data/skills.json');
-var newsEntries = null;
+var projects = require('../data/projects.json');
+var newsEntries = require('../data/news.json');
+//var hobbyPics = require('../data/hobbies.json');
+
 var lastUpdatedJsonTime = new Date();
 var hobbyBackground = 'beer_back.jpg';
+
+function updateJson() {
+  newsEntries = JSON.parse(fs.readFileSync('./data/news.json'));
+  projects = JSON.parse(fs.readFileSync('./data/projects.json'));
+  skills = JSON.parse(fs.readFileSync('./data/skills.json'));
+}
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
   var now = new Date();
   if( newsEntries == null || now.setMinutes(now.getMinutes()-30) > lastUpdatedJsonTime)
-    newsEntries = JSON.parse(fs.readFileSync('./data/news.json'));
+    updateJson();
 
   //if(newsEntries == null)
   //  newsEntries = JSON.parse(fs.readFileSync('./data/news.json'));
@@ -67,14 +76,15 @@ router.get('/projects', function(req, res, next) {
   res.render('projects', {
     title: 'Projects',
     subtitle: "What I've Done",
-    jumbotronBackgroundImage: 'java_angle.png'
+    jumbotronBackgroundImage: 'java_angle.png',
+    projects: projects.projects
   });
 });
 
 /* GET hobbies page. */
 router.get('/hobbies', function(req, res, next) {
 
-  fs.readdir('./public/images/hobbies', function(err, items) {
+  fs.readdir('./public/images/hobbies_bgr', function(err, items) {
     var index = Math.floor(Math.random()* items.length);
     hobbyBackground = items[index];
   });
@@ -82,7 +92,8 @@ router.get('/hobbies', function(req, res, next) {
   res.render('hobbies', {
     title: 'Hobbies',
     subtitle: "What I Like to Do",
-    jumbotronBackgroundImage: '/hobbies/' + hobbyBackground
+    jumbotronBackgroundImage: '/hobbies_bgr/' + hobbyBackground
+    //racePics: hobbyPics.hobbies.racePics
   });
 });
 

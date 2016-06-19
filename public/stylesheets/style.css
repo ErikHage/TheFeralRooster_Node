@@ -50,6 +50,10 @@ footer {
   padding-left: 10px;
 }
 
+.page-title {
+  white-space: nowrap;
+}
+
 .news-reel {
   border-radius: 10px;
   background: rgb(0,0,0);
@@ -157,3 +161,46 @@ footer {
 
 }
 
+/* PROJECTS PAGE */
+
+.projects-item {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding: 1px 10px 5px 10px;
+  background: rgb(0,0,0);
+  background: rgba(0,0,0,0.6);
+}
+
+.projects-item a,p {
+  padding-left: 20px;
+}
+
+.projects-item p {
+  color: white;
+}
+
+
+/* HOBBIES PAGE */
+.hobbies-item {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding: 1px 10px 5px 10px;
+  background: rgb(0,0,0);
+  background: rgba(0,0,0,0.6);
+}
+
+.hobbies-item img {
+  max-height: 250px;
+}
+
+/* ERROR PAGE */
+.error-message {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding: 1px 10px 5px 10px;
+  background: rgb(0,0,0);
+  background: rgba(0,0,0,0.6);
+}

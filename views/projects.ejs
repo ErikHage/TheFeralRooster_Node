@@ -15,7 +15,35 @@
             <div class="col-sm-1"></div>
             <div class="col-sm-10">
 
+                <h3>Work Projects</h3>
+                <% for(var i=0; i<projects.work.length; i++) { %>
 
+                <div class="projects-item">
+                    <h4><%= projects.work[i].name %></h4>
+                    <p><%= projects.work[i].languages %></p>
+                    <p><%= projects.work[i].description %></p>
+                </div>
+
+                <% } %>
+
+
+                <h3>Personal Projects</h3>
+                <% for(i=0; i<projects.personal.length; i++) { %>
+
+                <div class="projects-item">
+                    <h4><%= projects.personal[i].name %></h4>
+                    <p><%= projects.personal[i].languages %></p>
+
+                    <% if(typeof projects.personal[i].github != 'undefined') { %>
+                        <a href="<%= projects.personal[i].github %>" target="_blank">Code</a><br>
+                    <% } %>
+                    <% if(typeof projects.personal[i].website != 'undefined') { %>
+                        <a href="<%= projects.personal[i].website %>" target="_blank">Website</a>
+                    <% } %>
+                    <p><%= projects.personal[i].description %></p>
+                </div>
+
+                <% } %>
 
             </div>
             <div class="col-sm-1"></div>

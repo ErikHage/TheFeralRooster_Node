@@ -1,0 +1,50 @@
+{
+  "projects" : {
+    "work": [
+      {
+        "name": "Commodities Migration",
+        "languages": "Oracle SQL, Java 6, Shell scripting, Drools",
+        "description": "A migration of commodity index trades from vendor product Endur to in house system Doman. This resulted in a savings of $2 million a year to the firm. Involved creating new tables, editing existing trade capture flows, creating new automated reports, and interacting directly with COO, sales, traders, and middle office."
+      },
+      {
+        "name": "Equities Continuous Improvement",
+        "languages": "Oracle SQL, Java 6, Drools",
+        "description": ""
+      }
+    ],
+    "personal": [
+      {
+        "name": "This Website",
+        "languages": "HTML, NodeJS, EJS, Bootstrap, JQuery, CSS3",
+        "github": "https://github.com/ErikHage/TheFeralRooster_Node",
+        "url": "http://theferalrooster.com",
+        "description": ""
+      },
+      {
+        "name": "Red White and Brew Website",
+        "languages": "HTML, NodeJS, EJS, Bootstrap, JQuery, CSS3",
+        "github": "https://github.com/ErikHage/RedWhiteAndBrew_Node",
+        "url": "http://107.170.110.210:32799/",
+        "description": "A website built on the Node express framework using bootstrap and JQuery."
+      },
+      {
+        "name": "Employee Management Rest Service",
+        "languages": "Java 8, Spring 4, Spring Boot",
+        "github": "https://github.com/ErikHage/EmployeeManagementService",
+        "description": ""
+      },
+      {
+        "name": "Time Management Rest Service",
+        "languages": "Java 8, Spring 4, Spring Boot",
+        "github": "https://github.com/ErikHage/TimeManagementService",
+        "description": ""
+      },
+      {
+        "name": "Habitat Tracker",
+        "languages": "C#, .Net 4.5, SQLite",
+        "github": "https://github.com/ErikHage/HabitatTracker",
+        "description": ""
+      }
+    ]
+  }
+}

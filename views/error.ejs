@@ -1,3 +1,30 @@
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <% include partials/headerCommon %>
+
+    <title>The Feral Rooster - Error</title>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10 text-center">
+            <h1>Encountered an Error!</h1>
+            <h4>We're looking into the issue. Sit back, relax, and have a beer. </h4>
+            <img class="center-block img-responsive img-rounded" src="images/hobbies_bgr/beer_back.jpg">
+
+            <div class="error-message">
+                <h5>Error message: </h5>
+                <p><%= message %></p>
+            </div>
+        </div>
+        <div class="col-sm-1"></div>
+    </div>
+</div>
+
+</body>
+
+</html>
