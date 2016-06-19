@@ -6,7 +6,7 @@ var router = express.Router();
 var skills = require('../data/skills.json');
 var projects = require('../data/projects.json');
 var newsEntries = require('../data/news.json');
-//var hobbyPics = require('../data/hobbies.json');
+var hobbyPics = require('../data/hobbies.json');
 
 var lastUpdatedJsonTime = new Date();
 var hobbyBackground = 'beer_back.jpg';
@@ -92,8 +92,8 @@ router.get('/hobbies', function(req, res, next) {
   res.render('hobbies', {
     title: 'Hobbies',
     subtitle: "What I Like to Do",
-    jumbotronBackgroundImage: '/hobbies_bgr/' + hobbyBackground
-    //racePics: hobbyPics.hobbies.racePics
+    jumbotronBackgroundImage: '/hobbies_bgr/' + hobbyBackground,
+    racePics: hobbyPics.hobbies.racePics
   });
 });
 
