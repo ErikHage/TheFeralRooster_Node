@@ -5,6 +5,8 @@
 
 FROM node:4-onbuild
 
+MAINTAINER Erik Hage <ehage4@gmail.com>
+
 #Setting ENV variables
 ENV TERM xterm
 
