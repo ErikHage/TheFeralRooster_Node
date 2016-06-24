@@ -65,6 +65,7 @@ router.get('/about', function(req, res, next) {
 /* GET skills page. */
 router.get('/skills', function(req, res, next) {
 
+  var now = new Date();
   if( skills == null || now.setMinutes(now.getMinutes()-30) > lastUpdatedJsonTime)
     updateJson();
 
@@ -79,6 +80,7 @@ router.get('/skills', function(req, res, next) {
 /* GET projects page. */
 router.get('/projects', function(req, res, next) {
 
+  var now = new Date();
   if( projects == null || now.setMinutes(now.getMinutes()-30) > lastUpdatedJsonTime)
     updateJson();
 
@@ -98,6 +100,7 @@ router.get('/hobbies', function(req, res, next) {
     hobbyBackground = items[index];
   });
 
+  var now = new Date();
   if( hobbyPics == null || now.setMinutes(now.getMinutes()-30) > lastUpdatedJsonTime)
     updateJson();
 
