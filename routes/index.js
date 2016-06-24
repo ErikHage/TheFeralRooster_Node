@@ -3,10 +3,10 @@ var fs = require('fs');
 
 var router = express.Router();
 
-var skills = require('../data/skills.json');
-var projects = require('../data/projects.json');
-var newsEntries = require('../data/news.json');
-var hobbyPics = require('../data/hobbies.json');
+var skills = null; //require('../data/skills.json');
+var projects = null; //require('../data/projects.json');
+var newsEntries = null; //require('../data/news.json');
+var hobbyPics = null; //require('../data/hobbies.json');
 
 var lastUpdatedJsonTime = new Date();
 var hobbyBackground = 'beer_back.jpg';
@@ -15,6 +15,7 @@ function updateJson() {
   newsEntries = JSON.parse(fs.readFileSync('./data/news.json'));
   projects = JSON.parse(fs.readFileSync('./data/projects.json'));
   skills = JSON.parse(fs.readFileSync('./data/skills.json'));
+  hobbyPics = JSON.parse(fs.readFileSync('./data/hobbies.json'));
 }
 
 /* GET home page. */
@@ -63,6 +64,10 @@ router.get('/about', function(req, res, next) {
 
 /* GET skills page. */
 router.get('/skills', function(req, res, next) {
+
+  if( skills == null || now.setMinutes(now.getMinutes()-30) > lastUpdatedJsonTime)
+    updateJson();
+
   res.render('skills', {
     title: 'Skills',
     subtitle: 'What I Know',
@@ -73,6 +78,10 @@ router.get('/skills', function(req, res, next) {
 
 /* GET projects page. */
 router.get('/projects', function(req, res, next) {
+
+  if( projects == null || now.setMinutes(now.getMinutes()-30) > lastUpdatedJsonTime)
+    updateJson();
+
   res.render('projects', {
     title: 'Projects',
     subtitle: "What I've Done",
@@ -88,6 +97,9 @@ router.get('/hobbies', function(req, res, next) {
     var index = Math.floor(Math.random()* items.length);
     hobbyBackground = items[index];
   });
+
+  if( hobbyPics == null || now.setMinutes(now.getMinutes()-30) > lastUpdatedJsonTime)
+    updateJson();
 
   res.render('hobbies', {
     title: 'Hobbies',
