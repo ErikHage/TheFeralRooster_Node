@@ -3,10 +3,10 @@ var fs = require('fs');
 
 var router = express.Router();
 
-var skills = null; //require('../data/skills.json');
-var projects = null; //require('../data/projects.json');
-var newsEntries = null; //require('../data/news.json');
-var hobbyPics = null; //require('../data/hobbies.json');
+var skills = require('../data/skills.json');
+var projects = require('../data/projects.json');
+var newsEntries = require('../data/news.json');
+var hobbyPics = require('../data/hobbies.json');
 
 var lastUpdatedJsonTime = new Date();
 var hobbyBackground = 'beer_back.jpg';

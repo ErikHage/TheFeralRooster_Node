@@ -18,7 +18,7 @@
         "languages": "HTML, NodeJS, EJS, Bootstrap, JQuery, CSS3",
         "github": "https://github.com/ErikHage/TheFeralRooster_Node",
         "url": "http://theferalrooster.com",
-        "description": ""
+        "description": "My personal website to display my accomplishments and interests."
       },
       {
         "name": "Red White and Brew Website",
@@ -31,19 +31,19 @@
         "name": "Employee Management Rest Service",
         "languages": "Java 8, Spring 4, Spring Boot",
         "github": "https://github.com/ErikHage/EmployeeManagementService",
-        "description": ""
+        "description": "An example Spring Boot RESTful service to manage employee data. This was my first attempt at a Spring Boot application."
       },
       {
         "name": "Time Management Rest Service",
         "languages": "Java 8, Spring 4, Spring Boot",
         "github": "https://github.com/ErikHage/TimeManagementService",
-        "description": ""
+        "description": "Another example Spring Boot RESTful service to manage employee hours."
       },
       {
         "name": "Habitat Tracker",
         "languages": "C#, .Net 4.5, SQLite",
         "github": "https://github.com/ErikHage/HabitatTracker",
-        "description": ""
+        "description": "An application to track bird harvests for a hunting outfitter. Allows saving of data and querying over multiple fields. Includes the ability to save query results in Excel format."
       }
     ]
   }
