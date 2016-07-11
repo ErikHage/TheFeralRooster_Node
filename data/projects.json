@@ -3,13 +3,28 @@
     "work": [
       {
         "name": "Commodities Migration",
-        "languages": "Oracle SQL, Java 6, Shell scripting, Drools",
-        "description": "A migration of commodity index trades from vendor product Endur to in house system Doman. This resulted in a savings of $2 million a year to the firm. Involved creating new tables, editing existing trade capture flows, creating new automated reports, and interacting directly with COO, sales, traders, and middle office."
+        "languages": "Oracle, Sybase, Java 6, Shell, Drools",
+        "description": "A migration of commodity index trades from vendor product Endur to in house system Doman. This resulted in a savings of $2 million a year to the firm. Involved creating new tables, editing existing trade capture flows, creating new automated reports, and interacting directly with COO, sales, traders, and middle office. Work included new database schema, surveillance reports, regulatory reporting flows, and persistence service enhancements."
       },
       {
         "name": "Equities Continuous Improvement",
-        "languages": "Oracle SQL, Java 6, Drools",
-        "description": ""
+        "languages": "Oracle, Java 6, Drools",
+        "description": "Work directly with Equities traders and middle office to determine pain points and develop corresponding solutions. Examples include extending existing APIs with new functionality, developing automated processes to reduce manual intervention, and simplifying the flows to allow retirement of legacy services."
+      },
+      {
+        "name": "Derivatives Persistence Service Decoupling",
+        "languages": "Java 6, JBPM",
+        "description": "Persistence service was heavily coupled to other services which prevented local testing. Implementation of mocking and dependency injection allowed testing of code changes on the local workstation, saving hours per change. Also enabled greater unit test coverage due to mocking of services."
+      },
+      {
+        "name": "Regression Testing Tools for Legacy Systems",
+        "languages": "Java 6, Teamcity",
+        "description": "When the root cause of a production issue cannot be determined by the third line team, one of the subject matter experts for the respective application steps in to assist. I currently fill this role for the persistence service, publication service, and database."
+      },
+      {
+        "name": "Core Services and Database SME Support",
+        "languages": "Oracle, Java 6, Sybase, Drools",
+        "description": "When the root cause of a production issue cannot be determined by the third line team, one of the subject matter experts for the respective application steps in to assist. I currently fill this role for the persistence service, publication service, and database."
       }
     ],
     "personal": [
@@ -25,13 +40,13 @@
         "languages": "HTML, NodeJS, EJS, Bootstrap, JQuery, CSS3",
         "github": "https://github.com/ErikHage/RedWhiteAndBrew_Node",
         "url": "http://107.170.110.210:32799/",
-        "description": "A website built on the Node express framework using bootstrap and JQuery."
+        "description": "[NOTE: Currently in DEV] A website written on the node express framework, using Bootstrap 3, and packaged as a Docker image. The application is hosted on a cloud server and content is accessed through Nginx. Admin users have the ability to manipulate the site’s configuration data."
       },
       {
         "name": "Employee Management Rest Service",
         "languages": "Java 8, Spring 4, Spring Boot",
         "github": "https://github.com/ErikHage/EmployeeManagementService",
-        "description": "An example Spring Boot RESTful service to manage employee data. This was my first attempt at a Spring Boot application."
+        "description": "An example Spring Boot RESTful service to manage employee data. This was my first attempt at a Spring Boot application. I was also playing around with some new Java 8 functionality, like Options and the filter/map functions."
       },
       {
         "name": "Time Management Rest Service",
@@ -42,9 +57,14 @@
       {
         "name": "Habitat Tracker",
         "languages": "C#, .Net 4.5, SQLite",
-        "github": "https://github.com/ErikHage/HabitatTracker",
         "description": "An application to track bird harvests for a hunting outfitter. Allows saving of data and querying over multiple fields. Includes the ability to save query results in Excel format."
+      },
+      {
+        "name": "Payroll Management System",
+        "languages": "Java 7, Oracle 12c, PLSQL, Swing",
+        "description": "A system to calculate employee pay with data acquired via a timeclock UI. This allowed the client to save 1-2 hours each week calculating payroll. The system also flagged suspicious events and notified the proper manager. Automatically notified employees with a detailed review of their weekly hours. Included flexible querying of data and report generation for admin level users."
       }
+
     ]
   }
 }

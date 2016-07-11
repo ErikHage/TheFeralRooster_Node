@@ -8,12 +8,11 @@
       {
         "area": "Java",
         "skill": ["Java 5,6,7,8","Eclipse","IntelliJ","JUnit 3,4","JDBC","Swing","Drools","Servlets","JSP",
-          "EJB","Webservices","Spring 3,4","Spring MVC","Spring REST","Maven","Ant","Log4J","Hibernate",
-          "Weblogic","Spring Boot"]
+          "EJB","Webservices","Spring 3,4","Spring MVC","Spring REST","Maven","Ant","Log4J","Hibernate", "Weblogic","Spring Boot"]
       },
       {
         "area": "Database",
-        "skill": ["Oracle 10g,11c","Sybase","PLSQL","TSQL","Oracle Streams","SQLite","SQLPlus","Procedures","Triggers",
+        "skill": ["Oracle 11g,12c","Sybase","PLSQL","TSQL","Oracle Streams","SQLite","SQLPlus","Procedures","Triggers",
           "Cursors","Advanced Queries"]
       },
       {
@@ -26,8 +25,7 @@
       },
       {
         "area": "Web",
-        "skill": ["HTML","HTML5","CSS 3","Javascript","Webstorm","AngularJS","Node","Bootstrap","JQuery","SOAP","REST",
-          "JSON","Hosting","Nginx"]
+        "skill": ["HTML","HTML5","CSS 3","Javascript","Webstorm","AngularJS","Node","Bootstrap","JQuery","SOAP","REST", "JSON","Hosting","Nginx"]
       },
       {
         "area": "Docker",
