@@ -108,7 +108,9 @@ router.get('/hobbies', function(req, res, next) {
     title: 'Hobbies',
     subtitle: "What I Like to Do",
     jumbotronBackgroundImage: '/hobbies_bgr/' + hobbyBackground,
-    racePics: hobbyPics.hobbies.racePics
+    brewPics: hobbyPics.brewPics,
+    cookingPics: hobbyPics.cookingPics,
+    racePics: hobbyPics.racePics
   });
 });
 

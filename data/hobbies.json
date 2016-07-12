@@ -1,9 +1,25 @@
 {
-  "hobbies" : {
-    "racePics": [
-      "beast.jpg",
-      "spartansprint.JPG",
-      "tough_li_2015.jpg"
-    ]
-  }
+  "brewPics": [
+    "mash.jpg",
+    "ferment.jpg",
+    "setup.jpg",
+    "cider.jpg"
+  ],
+  "cookingPics": [
+    "buckle.jpg",
+    "frozen.jpg",
+    "pad.jpg",
+    "irish_pot.jpg",
+    "stirfry.jpg",
+    "cookies.jpg"
+  ],
+  "racePics": [
+    "beast.jpg",
+    "sprint.jpg",
+    "spartansprint.JPG",
+    "tough_li_2015.jpg",
+    "tm_2014.jpg"
+  ]
+
+
 }

@@ -199,6 +199,16 @@ footer {
   max-height: 250px;
 }
 
+div.c-wrapper {
+  width: 80%;
+  margin: auto;
+}
+
+.carousel-inner > .item > img {
+  max-height: 300px;
+  margin: auto;
+}
+
 /* ERROR PAGE */
 .error-message {
   margin-top: 10px;
