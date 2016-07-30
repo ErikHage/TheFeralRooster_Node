@@ -1,3 +1,6 @@
+/**
+ * Standard Node JS Libraries required for Express
+ */
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -5,16 +8,29 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+/**
+ * Define the global appRoot so that you can find your files anywhere.
+ */
+global.appRoot = path.resolve(__dirname);
 
+/**
+ * Custom routing for this application
+ */
+var index = require('./routes/index');
+var about = require('./routes/about');
+var hobbies = require('./routes/hobbies');
+var projects = require('./routes/projects');
+var skills = require('./routes/skills');
+
+
+/**
+ * Initialize your root Express event stack
+ */
 var app = express();
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
-
-// uncomment after placing your favicon in /public
+/**
+ * Standard Express Stack "use" requirements.
+ */
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -22,39 +38,49 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-app.use('/users', users);
+/**
+ * Attempt to build a configuration object for your file management
+ *  1) Initialize config
+ *  2) Initialize file variables
+ *  3) Declare function to refresh files
+ *  4) Other stuff you may want to pass around
+ */
+//1
+var config = {};
+//2
+config.newsEntries = require(global.appRoot + '/data/news.json');
+config.projects = require(global.appRoot + '/data/projects.json');
+config.skills = require(global.appRoot + '/data/skills.json');
+config.hobbyPics = require(global.appRoot + '/data/hobbies.json');
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
-
-// error handlers
-
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
-  });
+function refreshConfig() {
+  config.newsEntries = require(global.appRoot + '/data/news.json');
+  config.projects = require(global.appRoot + '/data/projects.json');
+  config.skills = require(global.appRoot + '/data/skills.json');
+  config.hobbyPics = require(global.appRoot + '/data/hobbies.json');
 }
 
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
-});
+config.refreshConfig = refreshConfig;
 
+
+
+/**
+ * Add your routes to the event stack after the basics have been processed.
+ */
+app.use('/', index(config));
+app.use('/about', about(config));
+app.use('/hobbies', hobbies(config));
+app.use('/projects', projects(config));
+app.use('/skills', skills(config));
+
+/**
+ * Don't need any of that weird shit that was here.
+ * This error handler works for Get or Post, as it's an "all"
+ * If you want to create a specific page for 400s or other errors,
+ *   just write up a app.get & app.post and either * or be regex/specific.
+ */
+app.all('*', function (req, res, next) {
+  res.status(400).send('Page not found.');
+});
 
 module.exports = app;

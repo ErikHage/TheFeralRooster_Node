@@ -1,45 +1,53 @@
+/**
+ * Standard libraries required for route
+ */
 var express = require('express');
-var fs = require('fs');
+var path = require('path');
 
-var router = express.Router();
+module.exports = function (config) {
+  var app = express();
+  app.set('views', path.join(global.appRoot, 'views'));
+  app.set('view engine', 'ejs');
+  
+  /**
+   * If you need to break a route into GET/POST then I suggest to do this:
+   */
+  
+  // app.get('*', functionForGets(config));
+  // app.post('*', functionForPosts(config));
+  
+  /**
+   * And then do the following in their respective functions
+   */
+  
+  // var app = express();
+  // app.get('/', function(req, res, next) {
+  //   //...
+  // });
+  // return app;
+  
+  app.get('/', function (req, res, next) {
+    if (!config.newsEntries.entries)
+      res.status(500).send('A terrible thing has happened.');
+    else {
+      renderIndex(req, res, config);
+    }
+  });
 
-var skills = require('../data/skills.json');
-var projects = require('../data/projects.json');
-var newsEntries = require('../data/news.json');
-var hobbyPics = require('../data/hobbies.json');
+  app.get('/refreshConfig', function(req, res, next) {
+    config.refreshConfig();
+    renderIndex(req, res, config);
+  });
+  
+  return app;
+};
 
-var lastUpdatedJsonTime = new Date();
-var hobbyBackground = 'beer_back.jpg';
-
-function updateJson() {
-  newsEntries = JSON.parse(fs.readFileSync('./data/news.json'));
-  projects = JSON.parse(fs.readFileSync('./data/projects.json'));
-  skills = JSON.parse(fs.readFileSync('./data/skills.json'));
-  hobbyPics = JSON.parse(fs.readFileSync('./data/hobbies.json'));
-}
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-
-  var now = new Date();
-  if( newsEntries == null || now.setMinutes(now.getMinutes()-30) > lastUpdatedJsonTime)
-    updateJson();
-
-  //if(newsEntries == null)
-  //  newsEntries = JSON.parse(fs.readFileSync('./data/news.json'));
-
-  //fs.readFile('./data/news.json', function(err, data) {
-  //  newsEntries = JSON.parse(data);
-  //});
-
-  //sort entries
-
-  var sortedEntries = newsEntries.entries;
-
-  sortedEntries.sort(function(a,b) {
-    if(a.date.year != b.date.year) {
+function renderIndex(req, res, config) {
+  var sortedEntries = config.newsEntries;
+  sortedEntries.sort(function (a, b) {
+    if (a.date.year != b.date.year) {
       return b.date.year - a.date.year;
-    } else if(a.date.month != b.date.month) {
+    } else if (a.date.month != b.date.month) {
       return b.date.month - a.date.month;
     }
     return b.date.day - a.date.day;
@@ -51,67 +59,4 @@ router.get('/', function(req, res, next) {
     jumbotronBackgroundImage: 'sunlight_forest.jpg',
     entries: sortedEntries
   });
-});
-
-/* GET about me page. */
-router.get('/about', function(req, res, next) {
-  res.render('aboutMe', {
-    title: 'About Me',
-    subtitle: "Who I Am",
-    jumbotronBackgroundImage: 'circuit.jpg'
-  });
-});
-
-/* GET skills page. */
-router.get('/skills', function(req, res, next) {
-
-  var now = new Date();
-  if( skills == null || now.setMinutes(now.getMinutes()-30) > lastUpdatedJsonTime)
-    updateJson();
-
-  res.render('skills', {
-    title: 'Skills',
-    subtitle: 'What I Know',
-    jumbotronBackgroundImage: 'maxresdefault.jpg',
-    skills: skills.skills
-  });
-});
-
-/* GET projects page. */
-router.get('/projects', function(req, res, next) {
-
-  var now = new Date();
-  if( projects == null || now.setMinutes(now.getMinutes()-30) > lastUpdatedJsonTime)
-    updateJson();
-
-  res.render('projects', {
-    title: 'Projects',
-    subtitle: "What I've Done",
-    jumbotronBackgroundImage: 'java_angle.png',
-    projects: projects.projects
-  });
-});
-
-/* GET hobbies page. */
-router.get('/hobbies', function(req, res, next) {
-
-  fs.readdir('./public/images/hobbies_bgr', function(err, items) {
-    var index = Math.floor(Math.random()* items.length);
-    hobbyBackground = items[index];
-  });
-
-  var now = new Date();
-  if( hobbyPics == null || now.setMinutes(now.getMinutes()-30) > lastUpdatedJsonTime)
-    updateJson();
-
-  res.render('hobbies', {
-    title: 'Hobbies',
-    subtitle: "What I Like to Do",
-    jumbotronBackgroundImage: '/hobbies_bgr/' + hobbyBackground,
-    brewPics: hobbyPics.brewPics,
-    cookingPics: hobbyPics.cookingPics,
-    racePics: hobbyPics.racePics
-  });
-});
-
-module.exports = router;
+}
