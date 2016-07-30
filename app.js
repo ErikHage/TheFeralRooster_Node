@@ -48,20 +48,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 //1
 var config = {};
 //2
-config.newsEntries = undefined;
-config.projects = undefined;
-config.skills = undefined;
-config.hobbyPics = undefined;
-config.lastUpdatedJsonTime = new Date();
-config.refreshInterval = 30;
-//3
-config.refreshFiles = function() {
+config.newsEntries = require(global.appRoot + '/data/news.json');
+config.projects = require(global.appRoot + '/data/projects.json');
+config.skills = require(global.appRoot + '/data/skills.json');
+config.hobbyPics = require(global.appRoot + '/data/hobbies.json');
+
+function refreshConfig() {
   config.newsEntries = require(global.appRoot + '/data/news.json');
   config.projects = require(global.appRoot + '/data/projects.json');
   config.skills = require(global.appRoot + '/data/skills.json');
   config.hobbyPics = require(global.appRoot + '/data/hobbies.json');
-};
-//4 - Other stuff
+}
+
+config.refreshConfig = refreshConfig;
+
 
 
 /**

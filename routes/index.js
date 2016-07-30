@@ -27,36 +27,36 @@ module.exports = function (config) {
   // return app;
   
   app.get('/', function (req, res, next) {
-    
-    var now = new Date();
-    if (config.newsEntries == null || now.setMinutes(now.getMinutes() - config.refreshInterval) > config.lastUpdatedJsonTime) {
-      config.lastUpdatedJsonTime = new Date();
-      config.refreshFiles();
-    }
-    
     if (!config.newsEntries.entries)
       res.status(500).send('A terrible thing has happened.');
     else {
-      var sortedEntries = config.newsEntries.entries;
-      
-      sortedEntries.sort(function (a, b) {
-        if (a.date.year != b.date.year) {
-          return b.date.year - a.date.year;
-        } else if (a.date.month != b.date.month) {
-          return b.date.month - a.date.month;
-        }
-        return b.date.day - a.date.day;
-      });
-      
-      res.render('index', {
-        title: 'The Feral Rooster',
-        subtitle: 'Personal domain of Erik B Hage',
-        jumbotronBackgroundImage: 'sunlight_forest.jpg',
-        entries: sortedEntries
-      });
+      renderIndex(req, res, config);
     }
   });
-  
+
+  app.get('/refreshConfig', function(req, res, next) {
+    config.refreshConfig();
+    renderIndex(req, res, config);
+  });
   
   return app;
 };
+
+function renderIndex(req, res, config) {
+  var sortedEntries = config.newsEntries;
+  sortedEntries.sort(function (a, b) {
+    if (a.date.year != b.date.year) {
+      return b.date.year - a.date.year;
+    } else if (a.date.month != b.date.month) {
+      return b.date.month - a.date.month;
+    }
+    return b.date.day - a.date.day;
+  });
+
+  res.render('index', {
+    title: 'The Feral Rooster',
+    subtitle: 'Personal domain of Erik B Hage',
+    jumbotronBackgroundImage: 'sunlight_forest.jpg',
+    entries: sortedEntries
+  });
+}

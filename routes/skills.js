@@ -21,7 +21,7 @@ module.exports = function (config) {
       title: 'Skills',
       subtitle: 'What I Know',
       jumbotronBackgroundImage: 'maxresdefault.jpg',
-      skills: config.skills.skills
+      skills: config.skills
     });
   });
   

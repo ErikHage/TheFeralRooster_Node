@@ -21,7 +21,7 @@ module.exports = function (config) {
       title: 'Projects',
       subtitle: "What I've Done",
       jumbotronBackgroundImage: 'java_angle.png',
-      projects: config.projects.projects
+      projects: config.projects
     });
   });
   
