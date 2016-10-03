@@ -1,6 +1,14 @@
 [
   {
     "date" : {
+      "day" : 3,
+      "month" : 10,
+      "year" : 2016 },
+    "title" : "Summer's over, time to get back to work",
+    "content" : "Summer was great, but it went by way too fast. Things are progressing with the brewery, layoffs at my job resulted in a larger workload for me and my team, and my last obstacle race of the year is next week. I started working on a new recipe management Spring Boot app (check the projects page) as a way to learn Thymeleaf templates. I'm planning to finish that up while working on improvements to the brewery website. Below I'm drinking one of our newest brews, a Golden Porter. <br><img class='img-responsive img-rounded center-block' style='max-height: 200px' src='/images/hobbies/drinkingbeer.jpg'>"
+  },
+  {
+    "date" : {
       "day" : 29,
       "month" : 7,
       "year" : 2016 },

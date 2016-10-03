@@ -28,6 +28,12 @@
     ],
     "personal": [
       {
+        "name": "Recipe Management Service [In Progress]",
+        "languages": "Java 8, Spring Boot, Thymeleaf, Bootstrap, CSS3",
+        "github": "https://github.com/ErikHage/RecipeManagementService",
+        "description": "A service to store my recipes and view them as needed. Spring Boot and Mongo backend, with a Thymeleaf front end."
+      },
+      {
         "name": "This Website",
         "languages": "HTML, NodeJS, EJS, Bootstrap, JQuery, CSS3",
         "github": "https://github.com/ErikHage/TheFeralRooster_Node",
@@ -35,7 +41,7 @@
         "description": "My personal website to display my accomplishments and interests."
       },
       {
-        "name": "Red White and Brew Website",
+        "name": "Red White and Brew Website [In Progress]",
         "languages": "HTML, NodeJS, EJS, Bootstrap, JQuery, CSS3",
         "github": "https://github.com/ErikHage/RedWhiteAndBrew_Node",
         "url": "http://107.170.110.210:32799/",
