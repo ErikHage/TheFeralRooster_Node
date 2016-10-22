@@ -14,6 +14,24 @@ var bodyParser = require('body-parser');
 global.appRoot = path.resolve(__dirname);
 
 /**
+ * Define mongoDB and Schemas
+ */
+var db = require('./db/db');
+var News = require('./db/news');
+
+var news = new News(  {
+  "date" : {
+    "day" : 29,
+    "month" : 7,
+    "year" : 2016 },
+  "title" : "Races so far this year",
+  "content" : "I just completed my 4th obstacle race of the year. Spartan Beast in April, Spartan Sprint in June, Spartan Super and Tough Mudder in July. I may sign up for another Tough Mudder in October, if I get enough team mates to join up. <br><img class='img-responsive img-rounded center-block' style='max-height: 200px' src='/images/hobbies/beast.jpg'>"
+});
+
+news.save();
+
+
+/**
  * Custom routing for this application
  */
 var index = require('./routes/index');
