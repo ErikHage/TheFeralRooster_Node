@@ -7,17 +7,22 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var newsSchema = new mongoose.Schema({
-    date: {
-        day: Number,
-        month: Number,
-        year: Number
-    },
+var newsSchema = new Schema({
     title: String,
-    content: String
+    content: String,
+    date: Date,
+    updated_at: Date
 });
 
-//custom methods to modify data
+//on every save, add the date
+newsSchema.pre('save', function(next) {
+    var currentDate = new Date();
+    this.updated_at = currentDate;
+    if(!this.date) {
+        this.date = currentDate;
+    }
+    next();
+});
 
 var News = mongoose.model('News', newsSchema);
 

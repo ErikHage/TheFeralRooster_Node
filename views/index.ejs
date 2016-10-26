@@ -19,23 +19,22 @@
                     <i class="fa fa-newspaper-o"></i>&nbsp;News
                 </h1>
                 <br>
-
-                <% for(var i = 0; i<entries.length; i++) { %>
+                <% entries.forEach(function(entry) { %>
 
                     <div class="news-entry">
-                        <h4 class="news-title"><%= entries[i].title %></h4>
+                        <h4 class="news-title"><%= entry.title %></h4>
                         <p class="news-date"> --
-                            <%= entries[i].date.month + '-'
-                              + entries[i].date.day + '-'
-                              +  entries[i].date.year %>
+                            <%= (entry.date.getMonth()+1) + '-'
+                              + (entry.date.getDate()+1) + '-'
+                              + entry.date.getFullYear() %>
                             --
                         </p>
-                        <p class="news-content"><%- entries[i].content %></p>
+                        <p class="news-content"><%- entry.content %></p>
                         <p>--------------------------------------------------</p>
 
                     </div>
 
-                <% } %>
+                <% }); %>
 
             </div>
             <div class="col-sm-1"></div>

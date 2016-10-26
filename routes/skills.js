@@ -10,19 +10,17 @@ module.exports = function (config) {
   app.set('view engine', 'ejs');
   
   app.get('/', function (req, res, next) {
-    
-    var now = new Date();
-    if (config.skills == null || now.setMinutes(now.getMinutes() - config.refreshInterval) > config.lastUpdatedJsonTime) {
-      config.lastUpdatedJsonTime = new Date();
-      config.refreshFiles();
-    }
-    
-    res.render('skills', {
-      title: 'Skills',
-      subtitle: 'What I Know',
-      jumbotronBackgroundImage: 'maxresdefault.jpg',
-      skills: config.skills
-    });
+
+    config.Skills.find({})
+        .sort('+order')
+        .exec(function(err, skills){
+            res.render('skills', {
+                title: 'Skills',
+                subtitle: 'What I Know',
+                jumbotronBackgroundImage: 'maxresdefault.jpg',
+                skills: skills
+            });
+        });
   });
   
   

@@ -14,22 +14,33 @@ var bodyParser = require('body-parser');
 global.appRoot = path.resolve(__dirname);
 
 /**
- * Define mongoDB and Schemas
+ * Define mongoDB
  */
 var db = require('./db/db');
 var News = require('./db/news');
+var Skills = require('./db/skills');
 
-var news = new News(  {
-  "date" : {
-    "day" : 29,
-    "month" : 7,
-    "year" : 2016 },
-  "title" : "Races so far this year",
-  "content" : "I just completed my 4th obstacle race of the year. Spartan Beast in April, Spartan Sprint in June, Spartan Super and Tough Mudder in July. I may sign up for another Tough Mudder in October, if I get enough team mates to join up. <br><img class='img-responsive img-rounded center-block' style='max-height: 200px' src='/images/hobbies/beast.jpg'>"
-});
+//var news = new News(  {
+//    "title" : "Red White and Brew",
+//    "content" : "I'm proud to be a founding member of the Red White and Brew Beer Company, to be located in/around Swedesboro, New Jersey. I also designed and host the <a href='http://107.170.110.210:32799' target='_blank'>brewery's website</a> (currently under construction). I started brewing back in 2012 when I bought a homebrewing kit on a whim. I'd always been interested in craft beer, but once I started brewing for myself it became a passion. So when my friend Chris (also a homebrewer) asked me if I would be interested in opening a microbrewery, my answer was an emphatic yes! We plan to open mid-end of 2017. <!-- Our flagship beer is called Checks and Balances IPA. We were tired of all those IPAs out there that are 100% bitterness, with no or very little maltiness. Checks and Balances IPA provides the traditional bitterness you would expect of an IPA, yet also has a nice malty finish to balance that out (hence the name). A close comparison would be 21st Amendment's Brew Free or Die IPA. -->"
+//});
+//
+//news.save(function(err) {
+//  if (err) throw err;
+//  console.log('News saved');
+//});
 
-news.save();
-
+//var skills = new Skills({
+//    "order": 12,
+//    "area": "Engineering",
+//    "skill": ["Statics","Mechanics of Materials","Fluid Dynamics","Mechanical Design and Analysis","Biomaterials",
+//        "Biomechanics","Pharmacokinetics","Pharmacodynamics","Tissue Engineering","BioInstrumentation","ProEngineer",
+//        "Nonlinear Dynamics","Manufacturing Processes"]
+//});
+//
+//skills.save(function(err) {
+//   if(err) throw err;
+//});
 
 /**
  * Custom routing for this application
@@ -57,30 +68,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 /**
- * Attempt to build a configuration object for your file management
- *  1) Initialize config
- *  2) Initialize file variables
- *  3) Declare function to refresh files
- *  4) Other stuff you may want to pass around
+ * Attempt to build a configuration object to pas around data
  */
-//1
-var config = {};
-//2
-config.newsEntries = require(global.appRoot + '/data/news.json');
-config.projects = require(global.appRoot + '/data/projects.json');
-config.skills = require(global.appRoot + '/data/skills.json');
-config.hobbyPics = require(global.appRoot + '/data/hobbies.json');
 
-function refreshConfig() {
-  config.newsEntries = require(global.appRoot + '/data/news.json');
-  config.projects = require(global.appRoot + '/data/projects.json');
-  config.skills = require(global.appRoot + '/data/skills.json');
-  config.hobbyPics = require(global.appRoot + '/data/hobbies.json');
-}
-
-config.refreshConfig = refreshConfig;
-
-
+var config = {
+    db: db,
+    News: News,
+    Skills: Skills
+};
 
 /**
  * Add your routes to the event stack after the basics have been processed.
@@ -102,3 +97,4 @@ app.all('*', function (req, res, next) {
 });
 
 module.exports = app;
+
