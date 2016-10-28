@@ -16,34 +16,45 @@
             <div class="col-sm-10">
 
                 <h3>Work Projects</h3>
-                <% for(var i=0; i<projects.work.length; i++) { %>
+                <% projects.forEach(function(project) { %>
 
-                <div class="projects-item">
-                    <h4><%= projects.work[i].name %></h4>
-                    <p><%= projects.work[i].languages %></p>
-                    <p><%= projects.work[i].description %></p>
-                </div>
+                    <% if(project.type == 'work') { %>
+                    <div class="projects-item">
+                        <h4><%= project.project %></h4>
+                        <p><%= project.skillsUsed %></p>
 
-                <% } %>
+                        <% if(typeof project.github != 'undefined') { %>
+                        <a href="<%= project.github %>" target="_blank">Code</a><br>
+                        <% } %>
+                        <% if(typeof project.url != 'undefined') { %>
+                        <a href="<%= project.url %>" target="_blank">Website</a>
+                        <% } %>
+                        <p><%= project.description %></p>
+                    </div>
+                    <% } %>
+
+                <% }); %>
 
 
                 <h3>Personal Projects</h3>
-                <% for(i=0; i<projects.personal.length; i++) { %>
+                <% projects.forEach(function(project) { %>
 
-                <div class="projects-item">
-                    <h4><%= projects.personal[i].name %></h4>
-                    <p><%= projects.personal[i].languages %></p>
+                    <% if(project.type == 'personal') { %>
+                    <div class="projects-item">
+                        <h4><%= project.project %></h4>
+                        <p><%= project.skillsUsed %></p>
 
-                    <% if(typeof projects.personal[i].github != 'undefined') { %>
-                        <a href="<%= projects.personal[i].github %>" target="_blank">Code</a><br>
+                        <% if(typeof project.github != 'undefined') { %>
+                        <a href="<%= project.github %>" target="_blank">Code</a><br>
+                        <% } %>
+                        <% if(typeof projects.url != 'undefined') { %>
+                        <a href="<%= project.url %>" target="_blank">Website</a>
+                        <% } %>
+                        <p><%= project.description %></p>
+                    </div>
                     <% } %>
-                    <% if(typeof projects.personal[i].url != 'undefined') { %>
-                        <a href="<%= projects.personal[i].url %>" target="_blank">Website</a>
-                    <% } %>
-                    <p><%= projects.personal[i].description %></p>
-                </div>
 
-                <% } %>
+                <% }); %>
 
             </div>
             <div class="col-sm-1"></div>

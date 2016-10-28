@@ -11,20 +11,28 @@ module.exports = function (config) {
   
   app.get('/', function (req, res, next) {
     
-    var now = new Date();
-    if (config.projects == null || now.setMinutes(now.getMinutes() - config.refreshInterval) > config.lastUpdatedJsonTime) {
-      config.lastUpdatedJsonTime = new Date();
-      config.refreshFiles();
-    }
-    
-    res.render('projects', {
-      title: 'Projects',
-      subtitle: "What I've Done",
-      jumbotronBackgroundImage: 'java_angle.png',
-      projects: config.projects
-    });
+    config.Project.find({})
+        .sort('+project')
+        .exec(function(err, projects) {
+          if(err) {
+            throw err;
+          }
+          console.log('DB Output: ' + projects);
+
+          renderProjects(req, res, projects);
+        });
   });
-  
   
   return app;
 };
+
+function renderProjects(req, res, projects) {
+
+  res.render('projects', {
+    title: 'Projects',
+    subtitle: "What I've Done",
+    jumbotronBackgroundImage: 'java_angle.png',
+    projects: projects
+  });
+
+}

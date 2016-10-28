@@ -16,11 +16,6 @@
         "description": "Persistence service was heavily coupled to other services which prevented local testing. Implementation of mocking and dependency injection allowed testing of code changes on the local workstation, saving hours per change. Also enabled greater unit test coverage due to mocking of services."
       },
       {
-        "name": "Regression Testing Tools for Legacy Systems",
-        "languages": "Java 6, Teamcity",
-        "description": "When the root cause of a production issue cannot be determined by the third line team, one of the subject matter experts for the respective application steps in to assist. I currently fill this role for the persistence service, publication service, and database."
-      },
-      {
         "name": "Core Services and Database SME Support",
         "languages": "Oracle, Java 6, Sybase, Drools",
         "description": "When the root cause of a production issue cannot be determined by the third line team, one of the subject matter experts for the respective application steps in to assist. I currently fill this role for the persistence service, publication service, and database."

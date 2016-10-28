@@ -19,6 +19,8 @@ global.appRoot = path.resolve(__dirname);
 var db = require('./db/db');
 var News = require('./db/news');
 var Skills = require('./db/skills');
+var Project = require('./db/projects');
+var Hobby = require('./db/hobbies');
 
 //var news = new News(  {
 //    "title" : "Red White and Brew",
@@ -41,6 +43,30 @@ var Skills = require('./db/skills');
 //skills.save(function(err) {
 //   if(err) throw err;
 //});
+
+//var project = new Project({
+//    "type": "personal",
+//    "project": "Payroll Management System",
+//    "skillsUsed": "Java 7, Oracle 12c, PLSQL, Swing",
+//    "github": null,
+//    "url": null,
+//    "description": "A system to calculate employee pay with data acquired via a timeclock UI. This allowed the client to save 1-2 hours each week calculating payroll. The system also flagged suspicious events and notified the proper manager. Automatically notified employees with a detailed review of their weekly hours. Included flexible querying of data and report generation for admin level users."
+//});
+//
+//project.save(function(err) {
+//    if(err) throw err;
+//});
+//
+//var hobby = new Hobby({
+//    "group": "exercise",
+//    "picturesPath": "images/hobbies/exercise",
+//    "summary": "Description here"
+//});
+//
+//hobby.save(function(err) {
+//    if(err) throw err;
+//});
+
 
 /**
  * Custom routing for this application
@@ -72,9 +98,10 @@ app.use(express.static(path.join(__dirname, 'public')));
  */
 
 var config = {
-    db: db,
     News: News,
-    Skills: Skills
+    Skills: Skills,
+    Project: Project,
+    Hobby: Hobby
 };
 
 /**
