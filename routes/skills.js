@@ -11,7 +11,7 @@ module.exports = function (config) {
   
   app.get('/', function (req, res, next) {
 
-    config.Skills.find({})
+    config.db.Skills.find({})
         .sort('+order')
         .exec(function(err, skills){
             res.render('skills', {

@@ -10,7 +10,7 @@ module.exports = function (config) {
   app.set('view engine', 'ejs');
 
   app.get('/', function (req, res) {
-    config.News.find({})
+    config.db.News.find({})
         .sort('-date')
         .exec(function(err, news) {
             if (err) {

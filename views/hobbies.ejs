@@ -12,99 +12,58 @@
 
     <div class="container-fluid">
 
-        <%
-            var classes;
-
-            function getClasses(index) {
-                if(index == 0)
-                    return "item active";
-                else
-                    return "item";
-            }
-        %>
-
         <div class="row">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
 
-                <div class="hobbies-item">
-                    <h4>Brewing</h4>
-                    <div class="c-wrapper">
-                        <div id="brewCarousel" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner" role="listbox">
-                                <% for(var i=0; i<brewPics.length; i++) { %>
-                                <div class="<%= getClasses(i)%>">
-                                    <img src="<%= 'images/hobbies/' + brewPics[i] %>">
+            <div class="col-sm-1"></div>
+
+            <div class="col-sm-10">
+                <% hobbies.forEach(function(hobby) { %>
+                    <div class="hobbies-item">
+                        <h4><%= hobby.group %></h4>
+                        <p><%= hobby.description %></p>
+                        <div class="row">
+                            <% pics[hobby.group].forEach(function(pic) { %>
+                                <div class="img-container pop col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                                    <img class="img-responsive img-thumbnail center-block"
+                                         src="<%= hobby.picturesPath + pic %>">
                                 </div>
-                                <% } %>
-                            </div>
-                            <a class="left carousel-control" href="#brewCarousel" role="button" data-slide="prev">
-                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="right carousel-control" href="#brewCarousel" role="button" data-slide="next">
-                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
+                            <% }); %>
                         </div>
                     </div>
-                </div>
+                <% }); %>
 
                 <div class="hobbies-item">
                     <h4>Coding</h4>
                     <p>See my <a href="/projects">Projects</a> page</p>
                 </div>
-
-                <div class="hobbies-item">
-                    <h4>Cooking</h4>
-                    <div class="c-wrapper">
-                        <div id="cookingCarousel" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner" role="listbox">
-                                <% for(i=0; i<cookingPics.length; i++) { %>
-                                <div class="<%= getClasses(i) %>">
-                                    <img src="<%= 'images/hobbies/' + cookingPics[i] %>">
-                                </div>
-                                <% } %>
-                            </div>
-                            <a class="left carousel-control" href="#cookingCarousel" role="button" data-slide="prev">
-                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="right carousel-control" href="#cookingCarousel" role="button" data-slide="next">
-                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="hobbies-item">
-                    <h4>Obstacle Racing</h4>
-                    <div class="c-wrapper">
-                        <div id="raceCarousel" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner" role="listbox">
-                                <% for(i=0; i<racePics.length; i++) { %>
-                                <div class="<%= getClasses(i)%>">
-                                    <img src="<%= 'images/hobbies/' + racePics[i] %>">
-                                </div>
-                                <% } %>
-                            </div>
-                            <a class="left carousel-control" href="#raceCarousel" role="button" data-slide="prev">
-                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="right carousel-control" href="#raceCarousel" role="button" data-slide="next">
-                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
             </div>
+
             <div class="col-sm-1"></div>
         </div>
     </div>
+
+    <div class="modal fade" id="imageModal" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <img src="" class="image-preview" style="width:100%">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(function() {
+            $('.pop').on('click', function() {
+                $('.image-preview').attr('src', $(this).find('img').attr('src'));
+                $('#imageModal').modal('show');
+            });
+        });
+    </script>
 
 </body>
 <footer>

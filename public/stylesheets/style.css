@@ -184,7 +184,6 @@ footer {
   color: white;
 }
 
-
 /* HOBBIES PAGE */
 .hobbies-item {
   margin-top: 10px;
@@ -195,18 +194,15 @@ footer {
   background: rgba(0,0,0,0.6);
 }
 
+.hobbies-item .img-container {
+  min-height: 160px;
+  min-width: 160px;
+}
+
 .hobbies-item img {
-  max-height: 250px;
-}
-
-div.c-wrapper {
-  width: 80%;
-  margin: auto;
-}
-
-.carousel-inner > .item > img {
-  max-height: 300px;
-  margin: auto;
+  max-height: 150px;
+  max-width: 150px;
+  margin-top: 10px;
 }
 
 /* ERROR PAGE */

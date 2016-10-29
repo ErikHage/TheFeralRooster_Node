@@ -7,6 +7,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var config = require('./config/config');
 
 /**
  * Define the global appRoot so that you can find your files anywhere.
@@ -14,13 +15,9 @@ var bodyParser = require('body-parser');
 global.appRoot = path.resolve(__dirname);
 
 /**
- * Define mongoDB
+ * Connect to mongoDB
  */
 var db = require('./db/db');
-var News = require('./db/news');
-var Skills = require('./db/skills');
-var Project = require('./db/projects');
-var Hobby = require('./db/hobbies');
 
 //var news = new News(  {
 //    "title" : "Red White and Brew",
@@ -92,17 +89,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-/**
- * Attempt to build a configuration object to pas around data
- */
-
-var config = {
-    News: News,
-    Skills: Skills,
-    Project: Project,
-    Hobby: Hobby
-};
 
 /**
  * Add your routes to the event stack after the basics have been processed.

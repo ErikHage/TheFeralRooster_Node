@@ -5,4 +5,6 @@
  */
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://ehage:ASdot786!@ds061076.mlab.com:61076/theferalrooster');
+var config = require('../config/config');
+
+mongoose.connect(config.mongo_uri);

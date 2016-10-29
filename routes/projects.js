@@ -11,7 +11,7 @@ module.exports = function (config) {
   
   app.get('/', function (req, res, next) {
     
-    config.Project.find({})
+    config.db.Project.find({})
         .sort('+project')
         .exec(function(err, projects) {
           if(err) {
