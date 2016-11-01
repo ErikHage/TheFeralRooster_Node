@@ -1,6 +1,9 @@
 /**
  * Common config
  *
+ * DB schemas
+ * Pictures for hobbies page
+ *
  * Created by Erik on 10/28/2016.
  */
 var config = {};
