@@ -8,7 +8,7 @@
  */
 var config = {};
 
-config.mongo_uri = "mongodb://ehage:ASdot786!@ds061076.mlab.com:61076/theferalrooster";
+config.mongo_uri = process.env.MONGO_HOST;
 
 var News = require('../db/news');
 var Skills = require('../db/skills');

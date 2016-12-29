@@ -1,5 +1,5 @@
 /**
- * Functions to talk to the mongo database
+ * Connect to Mongo
  *
  * Created by Absulom on 10/22/2016.
  */

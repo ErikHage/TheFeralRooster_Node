@@ -7,7 +7,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var config = require('./config/config');
 
 /**
  * Define the global appRoot so that you can find your files anywhere.
@@ -15,13 +14,19 @@ var config = require('./config/config');
 global.appRoot = path.resolve(__dirname);
 
 /**
+ * Define env variables for dev
+ */
+require('dotenv').config({silent: true});
+
+/**
  * Connect to mongoDB
  */
 var db = require('./db/db');
+var config = require('./config/config');
 
-//var news = new News(  {
-//    "title" : "Red White and Brew",
-//    "content" : "I'm proud to be a founding member of the Red White and Brew Beer Company, to be located in/around Swedesboro, New Jersey. I also designed and host the <a href='http://107.170.110.210:32799' target='_blank'>brewery's website</a> (currently under construction). I started brewing back in 2012 when I bought a homebrewing kit on a whim. I'd always been interested in craft beer, but once I started brewing for myself it became a passion. So when my friend Chris (also a homebrewer) asked me if I would be interested in opening a microbrewery, my answer was an emphatic yes! We plan to open mid-end of 2017. <!-- Our flagship beer is called Checks and Balances IPA. We were tired of all those IPAs out there that are 100% bitterness, with no or very little maltiness. Checks and Balances IPA provides the traditional bitterness you would expect of an IPA, yet also has a nice malty finish to balance that out (hence the name). A close comparison would be 21st Amendment's Brew Free or Die IPA. -->"
+//var news = new config.db.News(  {
+//    "title" : "2016 - Year in review",
+//    "content" : "<p>So this was a crazy year, I'm thinking of investing in alcohol. I know at least 50% of this country and the UK will be getting heavily intoxicated often. My year was pretty great though. I completed 5 races, three spartans and two tough mudders, without injuring myself too badly. I developed a proof of concept rest service at work that will hopefully convince my team to start breaking up our monolith applications. I finished the brewery's website, which is scheduled to go live very soon (find it <a href='http://redwhiteandbrewbeercompany.com'>HERE</a> once it does).</p><p>I had a great Christmas break home with the family, I hope everyone else did as well! We saw Rogue One (great movie!), ate some hibachi, exchanged gifts (got a new desk chair!), and I cooked up a bunch of dishes for the annual family Christmas Eve party. My latest dish was a frozen orange cream pie, which went over very well.</p>"
 //});
 //
 //news.save(function(err) {
@@ -99,14 +104,13 @@ app.use('/hobbies', hobbies(config));
 app.use('/projects', projects(config));
 app.use('/skills', skills(config));
 
-/**
- * Don't need any of that weird shit that was here.
- * This error handler works for Get or Post, as it's an "all"
- * If you want to create a specific page for 400s or other errors,
- *   just write up a app.get & app.post and either * or be regex/specific.
- */
-app.all('*', function (req, res, next) {
-  res.status(400).send('Page not found.');
+app.use(function (err, req, res, next) {
+  global.logger.error('Error: (' + err.status + ') ' + err.message, {js:'app.js'});
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    err: err
+  });
 });
 
 module.exports = app;
